@@ -1,3 +1,4 @@
+const cors = require("cors");
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
@@ -9,6 +10,10 @@ const linksRouter = require('./routes/links');
 const db = require('./db');
 
 const app = express();
+
+/* ----------- CORS (IMPORTANT for Vercel Frontend) ------------ */
+app.use(cors());  // ⭐ This line fixes "Network error"
+/* ------------------------------------------------------------- */
 
 app.use(helmet());
 app.use(morgan('tiny'));
