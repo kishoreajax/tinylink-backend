@@ -19,7 +19,7 @@ router.post('/', async (req, res) => {
     // If custom code provided
     if (finalCode) {
       if (!CODE_REGEX.test(finalCode)) {
-        return res.status(400).json({ error: 'Code must match [A-Za-z0-9]{6,8}' });
+        return res.status(400).json({ error: 'Oops! The code format is incorrect. Use 6–8 characters with letters and numbers only.' });
       }
 
       const exists = await db.query('SELECT code FROM links WHERE code=$1', [finalCode]);
